@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>시작화면</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+	</style>
+</head>
+<body onload="showVideo()">
+	<header>
+		<a href="#" class="logo">lego</a>
+		<ul class="navigation">
+			<li><a href="#">lego</a></li>
+			<li><a href="#">고객센터</a></li>
+			<li><a href="#">회원가입</a></li>
+		</ul>
+	</header>
+
+	<section class="home">
+		<video class="video-slide" src="1.mp4" autoplay muted loop></video>
+		<div class="content">
+			<h1>여행을 계획하는 새로운 방법<br><span>lego</span></h1>
+			<p>간단한설명간단한설명간단한설명간단한설명간단한설명간단한설명간단한설명
+			간단한설명간단한설명간단한설명간단한설명간단한설명간단한설명간단한설명
+		간단한설명간단한설명간단한설명간단한설명간단한설명간단한설명간단한설명</p>
+			<a href="#">로그인</a>
+		</div>
+	</section>
+
+
+	<!-- <script type="text/javascript">
+	  /*새로고침 할 때마다 배경화면 랜덤으로 바뀌게 하기*/
+        var url_array = ['1.mp4', '2.mp4', '3.mp4', '4.mp4'];
+    
+		function showVideo(){
+			var num = parseInt(Math.random()*url_array.length);
+        	var objV = document.getElementsByClassName("video-slide");
+			objV.src = url_array[num];
+		}
+	</script> -->
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인화면</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+	</style>
+</head>
+<body>
+    <header>
+		<a href="#" class="logo">lego Let's go outside<span>.</span></a>
+		<ul class="navigation">
+			<li><a href="#">logo</a></li>
+			<li><a href="#">고객센터</a></li>
+			<li><a href="#">마이페이지</a></li>
+		</ul>
+	</header>
+
+    <section>
+        <div class="banner">
+            <div class="bgimg">
+                <img src="img/img_1.jpg" class="cover">
+                <div class="searchBox">
+                    <div class="inputBox">
+                        <p>장소</p>
+                        <input type="text" list="movie-options" placeholder="도착지를 입력하세요.">
+                        <datalist id="movie-options">
+                            <option value="서울"></option>
+                            <option value="경기도"></option>
+                            <option value="부산"></option>
+                            <option value="광주"></option>
+                            <option value="강화도"></option>
+                            <option value="강원도"></option>
+                            <option value="경주"></option>
+                        </datalist>
+                    </div>
+                    <div class="inputBox">
+                        <p>가는날</p>
+                        <input type="date">
+                    </div>
+                    <div class="inputBox">
+                        <p>오는날</p>
+                        <input type="date">
+                    </div>
+                    <div class="inputBox">
+                        <p></p>
+                        <input type="submit" value="일정만들기">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="wrap-main-slider">
+            <div class="swiper-container main-slider">
+                <!-- <div class="swiper-wrapper">
+                    <div class="swiper-slide">Slide 1</div>
+                    <div class="swiper-slide">Slide 2</div>
+                    <div class="swiper-slide">Slide 3</div>
+                    <div class="swiper-slide">Slide 4</div>
+                </div> -->
+            </div>
+            <div class="dimmed-left"></div>
+            <div class="dimmed-right"></div>
+        </div>
+    </section>
+
+    <!-- <section class="about" id="about">
+        <div class="row">
+            <div class="col50">
+                <h2>logo</h2>
+                <p>회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소
+                개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회
+                사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개<br><br>
+                회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소
+                개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회
+                사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개</p>
+            </div>
+
+        </div>
+    </section> -->
+
+    <footer>
+        <div class="row">
+            <div class="col">
+                <h2 class="f-logo">lego</h2>
+            </div>
+            <div class="col"><h3>고객센터</h3></div>
+            <div class="col"><h3>협업문의</h3></div>
+            <div class="col"><h3>contact</h3></div>
+        </div>
+        <hr>
+        <div class="copyright">Copyright logo. All rights reserved. </div>
+    </footer>
+
+
+
+	<script type="text/javascript">
+        window.addEventListener('scroll', function(){
+            const header = document.querySelector('header');
+            header.classList.toggle("sticky", window.scrollY > 0);
+        });
+    </script>
+</body>
+</html>
