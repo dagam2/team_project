@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+	</style>
+</head>
+<body>
+    <header>
+		<a href="index.html" class="logo">lego</a>
+		<ul class="navigation">
+			<li><a href="#">lego</a></li>
+			<li><a href="#">고객센터</a></li>
+			<li><a href="#">마이페이지</a></li>
+		</ul>
+	</header>
+
+    <section>
+        <div class="loginBox">
+            <h2>로그인</h2>
+            <form>
+                <input type="text" name="userID" placeholder="아이디"><br>
+                <input type="password" name="password" placeholder="비밀번호"><br>
+                <div class="saveid">
+                    <input class="checkbox" type="checkbox">
+                    <label>로그인정보 기억하기</label>
+                </div>
+                <button>로그인</button><br>
+                <span class="line">
+                    <span>또는</span>
+                </span><br>
+                <button>네이버로 로그인</button>
+                <ul class="find_wrap">
+                    <li><a href="#">아이디 찾기</a>|</li>
+                    <li><a href="#">비밀번호 찾기</a>|</li>
+                    <li><a href="#">회원가입</a></li>
+                </ul>
+            </form>
+        </div>
+    </section>
+
+    <footer style="position: absolute;">
+        <div class="row">
+            <div class="col">
+                <h2 class="f-logo">lego</h2>
+                <div class="f-c">
+                    <p><i class="map"></i>서울시 금천구 가산동 426-5</p>
+                    <p><i class="email"></i>lego@gmail.com</p>
+                </div>
+            </div>
+            <div class="col"><h3>고객센터</h3></div>
+            <div class="col"><h3>협업문의</h3></div>
+            <div class="col">
+                <h3>newsletter</h3>
+                <p>subscribe for latest updates</p>
+                <form>
+                    <input type="email" placeholder="enter your email" class="n-email">
+                    <input type="submit" value="subscribe" class="n-btn">
+                </form>
+            </div>
+        </div>
+        <hr>
+        <div class="copyright">Copyright logo. All rights reserved. </div>
+    </footer>
+
+    <script type="text/javascript">
+        window.addEventListener('scroll', function(){
+            const header = document.querySelector('header');
+            header.classList.toggle("sticky", window.scrollY > 0);
+        });
+    </script>
+    
+</body>
+</html>
