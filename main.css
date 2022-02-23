@@ -1,0 +1,222 @@
+h2 { color: #333; padding: 20px 0;}
+
+.mainBtn {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(92, 92, 92);
+    color: rgb(201, 201, 201);
+    margin: 20px 0;
+    padding: 10px 20px;
+}
+
+/* 마이페이지submenu --------------------*/
+.sub-menu {
+	position: absolute;
+	background-color: white;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.15s ease-in;
+	top: 40px;
+}
+.sub-menu hr { margin: 0 20px; background-color: rgb(172, 172, 172);}
+.sub-menu li {
+	/* border-bottom: 1px solid rgba(0, 0, 0, 0.15); */
+	width: 150px;
+	text-align: center;
+	padding: 15px 0;
+}
+.sub-menu li a { color: #333; font-size: 15px;}
+.sub-menu a {
+	display: block;
+	text-align: center;
+	color: gray;
+}
+.navigation li:hover .sub-menu {
+	opacity: 1;
+	visibility: visible;
+	display: black;
+}
+.sub-menu li:hover { background-color: #e8e8e8; }
+.sub-menu li a:hover { color: black; }
+
+/* 
+section .section-wrapper {
+    position: relative;
+    box-sizing: content-box;
+} */
+
+.banner { position: relative; width: 100%;}
+
+.banner .bgimg {
+    position: relative;
+    width: 100%;
+    height: 55vh;
+    background: #333;
+    top: 219px;
+    /* margin-top: 200px; */
+}
+
+.cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.searchBox {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #fff;
+    padding: 20px 50px 40px;
+    transform: translate(50%, 50%);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+}
+.searchBox .inputBox { margin: 0 20px; }
+.searchBox .inputBox p { color: #333; margin-bottom: 10px;}
+.searchBox .inputBox input { 
+    border: 1px solid #333;
+    padding: 10px;
+    width: 100%;
+    min-width: none;
+    font-size: 1.1em;
+}
+.searchBox .inputBox input[type="submit"] {
+    outline: none;
+    border: none;
+    background: lightgray;
+    color: #333;
+    cursor: pointer;
+    letter-spacing: 2px;
+    padding: 13px;
+}
+
+
+/* 인기여행지 --------------------*/
+.bestDestinations {
+    position: relative;
+    top: 150px;
+    background-color: #fff;
+    width: 100%;
+    height: 500px;
+    margin: 270px 0 300px;
+    padding-top: 60px;
+    text-align: center;
+}
+.bestDestinations .card-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+.bestDestinations .card-container .image{
+    display: inline-block;
+    margin: 20px;
+    width: 290px;
+    height: 300px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+}
+.bestDestinations .card-container .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+.bestDestinations .card-container .image:hover img { transform: scale(1.1); } 
+.bestDestinations .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    display: none;
+    cursor: pointer;
+}
+.bestDestinations .popup div {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 750px;
+    height: 500px;
+    object-fit: cover;
+    background: #fff;
+    cursor: pointer;
+}
+
+/* 인기일정 --------------------*/
+.bestSchedule {
+    position: relative;
+    text-align: center;
+    background-color: rgb(231, 231, 231);
+    height: 600px;
+    margin-top: 200px;
+}
+.bestSchedule .bestSchedule-imgBox {
+    position: absolute;
+    top: 150px;
+    left: 200px;
+}
+.bestSchedule .bestSchedule-textBox {
+    position: absolute;
+    top: 150px;
+    left: 1290px;
+}
+.bestSchedule .bestSchedule-textBox p {
+    color: #333;
+}
+.bestSchedule button {
+    position: absolute;
+    top: 442px;
+    left: 1300px;
+}
+
+/* 후기게시판 --------------------*/
+.travelog {
+    position: relative;
+    text-align: center;
+    margin-top: 50px;
+    top: 200px;
+}
+.travelog .imgBox {
+    display: inline-block;
+    margin: 25px;
+}
+
+/* 뉴스레터 --------------------*/
+.newsletter {
+    margin: 100px 0;
+    padding: 100px 0;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    top: 150px;
+}
+.newsletter img{
+    position: relative;
+    width: 100%;
+    height: 30vh;
+    object-fit: cover;
+    margin: 50px 0;
+}
+.newsletter h2 { color:#fff; }
+.newsletter form { position: relative; bottom: 258px; }
+.newsletter p { /* max-width: 600px; */ margin: 20px auto; font-size: 30px; font-weight: 100; color: #fff;}
+.email-box { height: 30px; display: flex; justify-content: center; }
+.email-box div { background: #333; width: 40px; line-height: 30px; }
+.nBox, .nBtn { border: none; outline: none; }
+.nBox { width: 260px; padding: 0 10px; }
+.nBtn { background: #333; color: #fff; padding: 0 10px; cursor: pointer; }
+.email-box button:hover, .email-box button:active, .email-box button:focus { background: #1d2a3d; transition: all 1s ease 0s; } 
