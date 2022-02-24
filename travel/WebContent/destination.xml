@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MAP>
+	<PLACE>
+		<NAME>음식점A</NAME>
+		<ADDRESS>제주A</ADDRESS>
+		<CATEGORY>음식점</CATEGORY>
+		<ID>0001</ID>
+	</PLACE>
+	<PLACE>
+		<NAME>숙소B</NAME>
+		<ADDRESS>제주B</ADDRESS>
+		<CATEGORY>숙소</CATEGORY>
+		<ID>0002</ID>
+	</PLACE>
+	<PLACE>
+		<NAME>관광지C</NAME>
+		<ADDRESS>제주C</ADDRESS>
+		<CATEGORY>관광지</CATEGORY>
+		<ID>0003</ID>
+	</PLACE>
+</MAP>
