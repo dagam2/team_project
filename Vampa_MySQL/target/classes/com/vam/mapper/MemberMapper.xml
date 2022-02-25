@@ -7,7 +7,7 @@
 	<!-- 회원가입 -->  
   	<insert id="memberJoin">
   	
-  		insert into book_member values(#{memberId}, #{memberPw}, #{memberName},#{memberSex},#{memberPhoneNum},#{memberBirth}, #{memberMail}, #{memberAddr1}, #{memberAddr2}, #{memberAddr3}, 0)
+  		insert into book_member values(#{memberId}, #{memberPw}, #{memberName}, #{memberSex}, #{memberPhoneNum}, #{memberBirth}, #{memberMail}, #{memberAddr1}, #{memberAddr2}, #{memberAddr3}, 0)
 
   	</insert>
   	  	<!-- 아이디 중복검사 -->
@@ -16,6 +16,11 @@
   		select count(*) from book_member where memberId = #{memberId}
   	
   	</select>
-
+      <!-- 로그인 -->
+      <select id="memberLogin" resultType="com.vam.model.MemberVO">
+      select memberId, memberPw, memberName, adminck from book_member where memberId = #{memberId}
+         <!--select memberId, memberName, adminck from book_member where memberId = #{memberId} and memberPw = #{memberPw}-->
+      
+      </select>
   	
   </mapper>

@@ -35,6 +35,7 @@ public class MemberMapperTest {
 		membermapper.memberJoin(member);	//쿼리 메서드 실행
 		
 	}*/
+	/*
 	// 아이디 중복검사
 	@Test
 	public void memberIdChk() throws Exception{
@@ -43,6 +44,25 @@ public class MemberMapperTest {
 		membermapper.idCheck(id);
 		membermapper.idCheck(id2);
 	}
+	*/
+    /* 로그인 쿼리 mapper 메서드 테스트 */
+    @Test
+    public void memberLogin() throws Exception{
+        
+        MemberVO member = new MemberVO();    // MemberVO 변수 선언 및 초기화
+        
+        /* 올바른 아이디 비번 입력경우 */
+       // member.setMemberId("test3");
+        //member.setMemberPw("test3");
+        
+        /* 올바른 않은 아이디 비번 입력경우 */
+        member.setMemberId("test1123");
+        member.setMemberPw("test1321321");
+        
+        membermapper.memberLogin(member);
+        System.out.println("결과 값 : " + membermapper.memberLogin(member));
+        
+    }
 	
 	
 }

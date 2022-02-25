@@ -67,29 +67,26 @@ public class MemberVO {
 	public void setMemberSex(String memberSex) {
 		this.memberSex = memberSex;
 	}
-	public void setMemberPhoneNum(String memberPhoneNum) {
-		this.memberPhoneNum = memberPhoneNum;
-	}
-
 	public String getMemberPhoneNum() {
 		return memberPhoneNum;
 	}
-
-	public void setMemberBirth(String memberBirth) {
-		this.memberBirth = memberBirth;
+	public void setMemberPhoneNum(String memberPhoneNum) {
+		this.memberPhoneNum = memberPhoneNum;
 	}
-	
 	public String getMemberBirth() {
 		return memberBirth;
 	}
-
+	public void setMemberBirth(String memberBirth) {
+		this.memberBirth = memberBirth;
+	}
+	public String getMemberMail() {
+		return memberMail;
+	}
+	
 	public void setMemberMail(String memberMail) {
 		this.memberMail = memberMail;
 	}
 	
-	public String getMemberMail() {
-		return memberMail;
-	}
 
 	public String getMemberAddr1() {
 		return memberAddr1;
