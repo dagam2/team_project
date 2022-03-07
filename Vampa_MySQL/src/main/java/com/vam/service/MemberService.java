@@ -1,5 +1,7 @@
 package com.vam.service;
 
+import java.util.HashMap;
+
 import com.vam.model.MemberVO;
 
 public interface MemberService {
@@ -10,5 +12,9 @@ public interface MemberService {
 	public int idCheck(String memberId) throws Exception;
     /* 로그인 */
     public MemberVO memberLogin(MemberVO member) throws Exception;
-	
+    /* 임시비밀번호 */
+    public MemberVO memberfindpw(MemberVO member) throws Exception;
+    public void updatepw(HashMap<String, String> updateMap);
+    
+    public String selectMemberID(HashMap<String, String> selectMap);
 }

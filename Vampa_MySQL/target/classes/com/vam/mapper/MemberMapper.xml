@@ -18,9 +18,18 @@
   	</select>
       <!-- 로그인 -->
       <select id="memberLogin" resultType="com.vam.model.MemberVO">
-      select memberId, memberPw, memberName, adminck from book_member where memberId = #{memberId}
-         <!--select memberId, memberName, adminck from book_member where memberId = #{memberId} and memberPw = #{memberPw}-->
+      select memberId, memberName, adminck from book_member where memberId = #{memberId} and memberPw = #{memberPw}
       
       </select>
+	
+		<!-- 비밀번호 변경 -->
+		<update id="updatepw" >
+			update book_member set memberPw = #{memberPw} where memberId = #{memberId}
+		</update>
+		
+		<select id="selectMemberID" resultType="String">
+			select memberId from book_member 
+			where memberId=#{memberId} and memberMail=#{email}
+		</select>
   	
   </mapper>

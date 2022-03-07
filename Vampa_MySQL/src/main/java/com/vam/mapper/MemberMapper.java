@@ -1,5 +1,7 @@
 package com.vam.mapper;
 
+import java.util.HashMap;
+
 import com.vam.model.MemberVO;
 
 public interface MemberMapper {
@@ -15,5 +17,11 @@ public interface MemberMapper {
 	
 	/* 회원 주소 정보 */
 	public MemberVO getMemberInfo(String memberId);		
+	
+    /* 비밀번호찾기 */
+    public MemberVO memberfindpw(MemberVO member);
+    public void updatepw(HashMap<String, String> updateMap);
+    
+    public String selectMemberID(HashMap<String, String> selectMap);
 	
 }

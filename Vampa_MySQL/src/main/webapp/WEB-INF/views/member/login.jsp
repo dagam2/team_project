@@ -19,7 +19,7 @@
 	<div class="wrap">
     <form id="login_form" method="post">
 		<div class="logo_wrap">
-			<span>Book Mall</span>
+			<span>Le'Go</span>
 		</div>
 		<div class="login_wrap"> 
 			<div class="id_wrap">
@@ -29,7 +29,7 @@
 			</div>
 			<div class="pw_wrap">
 				<div class="pw_input_box">
-				    <input class="pw_iput" name="memberPw">
+				    <input class="pw_input" name="memberPw">
 				</div>
 			</div>
             <c:if test = "${result == 0 }">

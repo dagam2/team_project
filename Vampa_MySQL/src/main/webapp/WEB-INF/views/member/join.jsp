@@ -31,14 +31,15 @@
 			<div class="pw_wrap">
 				<div class="pw_name">비밀번호</div>
 				<div class="pw_input_box">
-					<input class="pw_input" name="memberPw">
+					<input type="password" class="pw_input" name="memberPw">
+					
 				</div>
 				<span class="final_pw_ck">비밀번호를 입력해주세요.</span>
 			</div>
 			
 			<div class="pwck_wrap">
 				<div class="pwck_name">비밀번호 확인</div>
-				<div class="pwck_input_box"><input class="pwck_input"></div>
+				<div type="password" class ="pwck_input_box"><input class="pwck_input"></div>
 				<span class="final_pwck_ck">비밀번호 확인을 입력해주세요.</span>
 				<span class="pwck_input_re_1">비밀번호가 일치합니다.</span>
                 <span class="pwck_input_re_2">비밀번호가 일치하지 않습니다.</span>
@@ -266,6 +267,7 @@ $('.id_input').on("propertychange change keyup paste input", function(){
 $(".mail_check_button").click(function(){
     
     var email = $(".mail_input").val();        // 입력한 이메일
+    var id  = $(".id_input").val();
     var cehckBox = $(".mail_check_input");        // 인증번호 입력란
     var boxWrap = $(".mail_check_input_box");    // 인증번호 입력란 박스
     var warnMsg = $(".mail_input_box_warn");    // 이메일 입력 경고글

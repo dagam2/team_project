@@ -1,5 +1,6 @@
 package com.vam.controller;
 
+import java.util.HashMap;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
@@ -31,8 +32,7 @@ public class MemberController {
 	private MemberService memberservice;
     @Autowired
     private JavaMailSender mailSender;
-    @Autowired
-    private BCryptPasswordEncoder pwEncoder;
+
 	//회원가입 페이지 이동
 	@RequestMapping(value = "join", method = RequestMethod.GET)
 	public void joinGET() {
@@ -44,21 +44,14 @@ public class MemberController {
 	@RequestMapping(value="/join", method=RequestMethod.POST)
 	public String joinPOST(MemberVO member) throws Exception{
 		
-//		logger.info("join 진입");
-//		
-//		// 회원가입 서비스 실행
-//		memberservice.memberJoin(member);
-//		
-//		logger.info("join Service 성공");
-        String rawPw = "";            // 인코딩 전 비밀번호
-        String encodePw = "";        // 인코딩 후 비밀번호
-        
-        rawPw = member.getMemberPw();            // 비밀번호 데이터 얻음
-        encodePw = pwEncoder.encode(rawPw);        // 비밀번호 인코딩
-        member.setMemberPw(encodePw);            // 인코딩된 비밀번호 member객체에 다시 저장
+		logger.info("join 진입");
+		
+		// 회원가입 서비스 실행
+		memberservice.memberJoin(member);
+		
+		logger.info("join Service 성공");
         
         /* 회원가입 쿼리 실행 */
-        memberservice.memberJoin(member);
 		return "redirect:/main";
 	}
 	
@@ -67,6 +60,13 @@ public class MemberController {
 	public void loginGET() {
 		
 		logger.info("로그인 페이지 진입");
+		
+	}
+	//비밀번호 찾기 페이지 이동
+	@RequestMapping(value = "findpw", method = RequestMethod.GET)
+	public void findpwGET() {
+		
+		logger.info("비밀번호찾기 페이지 진입");
 		
 	}
 	// 아이디 중복 검사
@@ -134,38 +134,26 @@ public class MemberController {
     /* 로그인 */
     @RequestMapping(value="login", method=RequestMethod.POST)
     public String loginPOST(HttpServletRequest request, MemberVO member, RedirectAttributes rttr) throws Exception{
-        HttpSession session = request.getSession();
-        String rawPw = "";
-        String encodePw = "";
-    
-        MemberVO lvo = memberservice.memberLogin(member);    // 제출한아이디와 일치하는 아이디 있는지 
         
-        if(lvo != null) {            // 일치하는 아이디 존재시
+        //System.out.println("login 메서드 진입");
+        //System.out.println("전달된 데이터 : " + member);
+        
+        HttpSession session = request.getSession();
+        MemberVO lvo = memberservice.memberLogin(member);
+        
+        if(lvo == null) {                                // 일치하지 않는 아이디, 비밀번호 입력 경우
             
-            rawPw = member.getMemberPw();        // 사용자가 제출한 비밀번호
-            encodePw = lvo.getMemberPw();        // 데이터베이스에 저장한 인코딩된 비밀번호
-            
-            if(true == pwEncoder.matches(rawPw, encodePw)) {        // 비밀번호 일치여부 판단
-                
-                lvo.setMemberPw("");                    // 인코딩된 비밀번호 정보 지움
-                session.setAttribute("member", lvo);     // session에 사용자의 정보 저장
-                return "redirect:/main";        // 메인페이지 이동
-                
-                
-            } else {
- 
-                rttr.addFlashAttribute("result", 0);            
-                return "redirect:/member/login";    // 로그인 페이지로 이동
-                
-            }
-            
-        } else {                    // 일치하는 아이디가 존재하지 않을 시 (로그인 실패)
-            
-            rttr.addFlashAttribute("result", 0);            
-            return "redirect:/member/login";    // 로그인 페이지로 이동
+            int result = 0;
+            rttr.addFlashAttribute("result", result);
+            return "redirect:/member/login";
             
         }
-    }
+        
+        session.setAttribute("member", lvo);             // 일치하는 아이디, 비밀번호 경우 (로그인 성공)
+        
+        return "redirect:/main";
+    }    
+    
     /* 메인페이지 로그아웃 */
     @RequestMapping(value="logout.do", method=RequestMethod.GET)
     public String logoutMainGET(HttpServletRequest request) throws Exception{
@@ -176,7 +164,76 @@ public class MemberController {
         session.invalidate();
         
         return "redirect:/main";  
+    }
+    
+    /* 임시비밀번호 이메일전송 */
+    @RequestMapping(value="/mailCheck2", method=RequestMethod.GET)
+    @ResponseBody
+    public String mailCheck2GET(String email, String memberId, String result) throws Exception{
+
+        HashMap<String, String> updateMap = new HashMap<>();
+        HashMap<String, String> selectMap = new HashMap<>();
+
+        /* 뷰(View)로부터 넘어온 데이터 확인 */
+        logger.info("이메일 데이터 전송 확인");
+        logger.info("이메일 : " + email);
+        logger.info("id : " + memberId);
+         
+        selectMap.put("memberId", memberId);
+        selectMap.put("email", email);
+        String getId = memberservice.selectMemberID(selectMap);
         
+        if(getId == null){ // id email 불일치
+        	logger.info("아이디 이메일 불일치");
+        	return "false";
+        }else{ // 일치
+        	logger.info("mailCheck2GET getId : "+getId);
+
+            /* 비밀번호(난수) 생성 */
+    		String checkNum2 = "";
+    		for (int i = 0; i < 12; i++) {
+    			checkNum2 += (char) ((Math.random() * 26) + 97);
+    		}
+            logger.info("임시 비밀번호 " + checkNum2);
+            updateMap.put("memberPw", checkNum2);
+            updateMap.put("memberId", memberId);
+
+            
+            /* 이메일 보내기 */
+            String setFrom = "ksm5654f2@naver.com";
+            String toMail = email;
+            String title = "임시비밀번호 발급 입니다.";
+            String content = 
+                    "임시비밀번호 입니다." +
+                    "<br><br>" + 
+                    "비밀번호는 " + checkNum2 + "입니다." + 
+                    "<br>" + 
+                    "임시비밀번호로 로그인하여주세요.";
+            memberservice.updatepw(updateMap);
+            logger.info("확인 ");
+            
+            try {
+                
+                MimeMessage message2 = mailSender.createMimeMessage();
+                MimeMessageHelper helper2 = new MimeMessageHelper(message2, true, "utf-8");
+                helper2.setFrom(setFrom);
+                helper2.setTo(toMail);
+                helper2.setSubject(title);
+                helper2.setText(content,true);
+                mailSender.send(message2);
+                
+            }catch(Exception e) {
+                e.printStackTrace();
+            }
+        	return "true";
+        }		
+
+        
+
+    
         
     }
+    
+    
+    
 }

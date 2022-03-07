@@ -1,5 +1,7 @@
 package com.vam.service;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +31,22 @@ public class MemberServiceImpl implements MemberService{
         
         return membermapper.memberLogin(member);
     }
+
+    public void memberPw(HashMap<String,String> updateMap) throws Exception {}
+	@Override
+	public MemberVO memberfindpw(MemberVO member) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void updatepw(HashMap<String, String> updateMap) {
+		// TODO Auto-generated method stub
+		membermapper.updatepw(updateMap);
+	}
+	@Override
+	public String selectMemberID(HashMap<String, String> selectMap) {
+		// TODO Auto-generated method stub
+		return membermapper.selectMemberID(selectMap);
+	}
 	
-	
-}
+	}
